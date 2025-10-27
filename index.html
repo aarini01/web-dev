@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision - Home</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Genre Buttons */
+.genre-buttons {
+  text-align: center;
+  margin: 20px 0;
+}
+.genre-buttons button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 30px;
+  background-color: #e50914;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.genre-buttons button:hover {
+  background-color: #b0060f;
+}
+.genre-buttons button.active {
+  background-color: #fff;
+  color: #e50914;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="C:\Users\ashutosh singh\Desktop\Movie Recommenddation Site\logo.png" alt="Vision Logo">
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="trending.html">Trending</a>
+    <a href="genres.html">Genres</a>
+    <a href="about.html">About</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Discover Your Next Favorite Movie</h2>
+  <p>Get personalized movie recommendations with Vision</p>
+  <input id="searchBox" type="text" placeholder="Search for a movie...">
+  <button onclick="searchMovie()">Search</button>
+</section>
+
+<section class="movies">
+  <h3>Filter by Genre</h3>
+  <div class="genre-buttons" id="genreButtons"></div>
+
+  <h3>Movies</h3>
+  <div class="movie-grid" id="movieGrid"></div>
+</section>
+
+<footer>
+  <p>© 2025 Vision. All Rights Reserved.</p>
+</footer>
+
+<script>
+const movies = [
+  { title: "Inception", genre: "Sci-Fi", img: "https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_UF894,1000_QL80_.jpg" },
+  { title: "Interstellar", genre: "Sci-Fi", img: "https://m.media-amazon.com/images/I/71niXI3lxlL._AC_UF894,1000_QL80_.jpg" },
+  { title: "The Dark Knight", genre: "Action", img: "https://originalvintagemovieposters.com/wp-content/uploads/2020/03/Dark-Knight-70822-scaled-1383x2048.jpg" },
+  { title: "Avengers: Endgame", genre: "Action", img: "https://m.media-amazon.com/images/I/81ai6zx6eXL._AC_UF894,1000_QL80_.jpg" },
+  { title: "Titanic", genre: "Romance", img: "https://c8.alamy.com/comp/PXNB80/titanic-original-movie-poster-PXNB80.jpg" },
+  { title: "Joker", genre: "Drama", img: "https://www.vintagemovieposters.co.uk/wp-content/uploads/2019/11/IMG_2167-2.jpeg" },
+  { title: "The Batman", genre: "Action", img: "https://brian.carnell.com/wp-content/uploads/2022/01/the-batman-poster-01-1200x1778.jpg" },
+  { title: "Avatar: The Way of Water", genre: "Sci-Fi", img: "https://pbs.twimg.com/media/FVESicTWUAA57gu.jpg:large" },
+  { title: "Black Panther", genre: "Action", img: "https://i.redd.it/f9wb3meilaj21.jpg" },
+  { title: "Dune", genre: "Sci-Fi", img: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2a5bb2105168471.5f733bb4cec20.jpg" },
+  { title: "Forrest Gump", genre: "Drama", img: "https://shatpod.com/movies/wp-content/uploads/yE5d3BUhE8hCnkMUJOo1QDoOGNz-scaled.jpg" },
+  { title: "Oppenheimer", genre: "Drama", img: "https://m.media-amazon.com/images/S/pv-target-images/38357a3f1a8638010d49d72613cc0f6f16cce21d5f8067172619c090540c90b4.jpg" }
+];
+
+
+
+// Generate genre buttons dynamically
+const genres = [...new Set(movies.map(movie => movie.genre))];
+const genreButtonsDiv = document.getElementById("genreButtons");
+
+genres.unshift("All"); // Add 'All' button
+genres.forEach(g => {
+  const btn = document.createElement("button");
+  btn.innerText = g;
+  btn.addEventListener("click", () => filterByGenre(g, btn));
+  genreButtonsDiv.appendChild(btn);
+});
+
+// Display movies
+const movieGrid = document.getElementById("movieGrid");
+
+function displayMovies(list) {
+  movieGrid.innerHTML = "";
+  list.forEach(movie => {
+    const card = document.createElement("div");
+    card.classList.add("movie-card");
+    card.innerHTML = `<img src="${movie.img}" alt="${movie.title}"><h4>${movie.title}</h4>`;
+    movieGrid.appendChild(card);
+  });
+}
+
+// Filter by genre
+function filterByGenre(genre, btn) {
+  document.querySelectorAll(".genre-buttons button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  displayMovies(genre === "All" ? movies : movies.filter(m => m.genre === genre));
+}
+
+// Search movies
+function searchMovie() {
+  const query = document.getElementById("searchBox").value.toLowerCase();
+  const filtered = movies.filter(movie => movie.title.toLowerCase().includes(query));
+  displayMovies(filtered.length ? filtered : movies);
+}
+
+// Initialize
+displayMovies(movies);
+</script>
+
+</body>
+</html>
