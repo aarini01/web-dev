@@ -3,40 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Navbar Example</title>
+  <title>Portfolio - Aarini Goel</title>
   <style>
-    /* Reset default spacing */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Body styling */
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f0f4ff;
+      background-color: #e3f2fd; /* soft light blue */
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
-    /* ✅ Navbar container */
+    /* ✅ NAVBAR */
     nav {
-      background-color: #1565c0;   /* Blue color */
+      width: 100%;
+      background-color: #1565c0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
     }
 
-    /* Logo styling */
     .logo {
-      color: white;
+      color: #fff;
       font-size: 22px;
       font-weight: bold;
       letter-spacing: 1px;
     }
 
-    /* Navigation links */
     .nav-links {
       list-style: none;
       display: flex;
@@ -47,17 +53,58 @@
     }
 
     .nav-links a {
-      text-decoration: none;
       color: white;
+      text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      color: #FFD700;  /* gold hover */
+      color: #FFD700;
     }
 
-    /* ✅ Responsive for mobile */
+    /* ✅ MAIN CONTAINER */
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      max-width: 800px;
+      margin-top: 120px; /* space for navbar */
+    }
+
+    img {
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: #1565c0;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #1976d2;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      text-align: left;
+      margin: 10px 0 20px 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* ✅ Responsive Navbar */
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
@@ -73,28 +120,83 @@
       .nav-links li {
         margin: 10px 0;
       }
+
+      .container {
+        margin-top: 160px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ Navbar Section -->
+  <!-- 🔹 NAVBAR -->
   <nav>
-    <div class="logo">My Portfolio</div>
+    <div class="logo">Aarini Goel</div>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
     </ul>
   </nav>
 
-  <!-- Example Page Content -->
-  <section style="padding: 80px 40px;">
-    <h1>Welcome to My Portfolio</h1>
-    <p>This is where your main content goes...</p>
-  </section>
+  <!-- 🔹 MAIN CONTAINER -->
+  <div class="container">
+    <img src="pic.jpg" alt="Aarini Goel Profile Photo" width="180" height="200">
+    <h1>Aarini Goel</h1>
+    <p>
+      Email: aarinigoel@gmail.com<br>
+      Phone: 8439378854<br>
+      City: Ghaziabad
+    </p>
+    <p>
+      <a href="https://www.linkedin.com/in/aarini-goel" target="_blank">
+        <img src="linkedin.png" alt="LinkedIn" width="30" height="30">
+      </a>
+      <a href="https:" target="_blank">https://github.com/aarini01
+        <img src="github.png" alt="GitHub" width="30" height="30">
+      </a>
+    </p>
+
+    <!-- About Section -->
+    <h2 id="about">About Me</h2>
+    <p>
+      I am a passionate MCA student with a strong foundation in Python, SQL 
+      I enjoy working on projects that combine problem-solving and creativity — from building data-driven dashboards 
+      to developing efficient code solutions. My goal is to grow as a Data Scientist, leveraging my skills to extract 
+      meaningful insights and contribute to impactful projects.
+    </p>
+
+    <!-- Projects Section -->
+    <h2 id="projects">Projects</h2>
+    <ul>
+      <li><b>Home Automation System</b> – Developed an IoT-based system integrating temperature, humidity, and motion sensors.</li>
+      <li><b>Sales Analysis</b> – Analyzed Diwali sales data using Python to identify top-performing product categories and generate insights.</li>
+      <li><b>Business Growth Analysis</b> – Utilized SQL to analyze a music playlist database and uncover business growth opportunities.</li>
+    </ul>
+
+    <!-- Skills Section -->
+    <h2 id="skills">Skills</h2>
+    <ul>
+      <li>Python</li>
+      <li>SQL</li>
+      <li>DBMS</li>
+    </ul>
+
+    <!-- Education Section -->
+    <h2 id="education">Education</h2>
+    <ul>
+      <li><b>Master's of Computer Applications</b><br>KIET Group of Institutions, Ghaziabad (2025 – 2027)</li>
+    
+    </ul>
+
+    <!-- Certifications Section -->
+    <h2 id="certifications">Certifications</h2>
+    <ul>
+      <li>Python with Data Science by IBM</li>
+    </ul>
+  </div>
 
 </body>
 </html>
